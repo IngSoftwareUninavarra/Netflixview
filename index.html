@@ -71,23 +71,35 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen">
-        <div class="absolute inset-0 hero-gradient z-10"></div>
-        <img src="https://image.tmdb.org/t/p/original/9dKCd55IuTT5QRs989m9Qlb7d8B.jpg" alt="Featured Show" class="w-full h-full object-cover">
-        <div class="absolute bottom-1/4 left-12 z-20 max-w-md">
-            <img src="skullapp_Edit.mp4" alt="Stranger Things Logo" class="h-20 mb-4">
-            <p class="text-lg mb-6">When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.</p>
-            <div class="flex space-x-4">
-                <button class="bg-white text-black px-6 py-2 rounded flex items-center hover:bg-opacity-80">
-                    <i class="fas fa-play mr-2"></i> Play
-                </button>
-                <button class="bg-gray-600 bg-opacity-70 text-white px-6 py-2 rounded flex items-center hover:bg-opacity-50">
-                    <i class="fas fa-info-circle mr-2"></i> More Info
-                </button>
-            </div>
+<!-- Hero Section -->
+<section class="relative h-screen">
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 hero-gradient z-10"></div>
+
+    <!-- Background image -->
+    <img src="https://image.tmdb.org/t/p/original/9dKCd55IuTT5QRs989m9Qlb7d8B.jpg" alt="Featured Show" class="w-full h-full object-cover">
+
+    <!-- Content over the background -->
+    <div class="absolute bottom-1/4 left-12 z-20 max-w-md">
+        <!-- Stranger Things video logo -->
+        <video autoplay muted loop playsinline class="h-20 mb-4">
+            <source src="skullapp_Edit.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <p class="text-lg mb-6 text-white">When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.</p>
+
+        <div class="flex space-x-4">
+            <button class="bg-white text-black px-6 py-2 rounded flex items-center hover:bg-opacity-80">
+                <i class="fas fa-play mr-2"></i> Play
+            </button>
+            <button class="bg-gray-600 bg-opacity-70 text-white px-6 py-2 rounded flex items-center hover:bg-opacity-50">
+                <i class="fas fa-info-circle mr-2"></i> More Info
+            </button>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Content Rows -->
     <div class="relative z-30 -mt-20 pb-20">
