@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.8) 100%);
+        }
+        .scroll-container {
+            scrollbar-width: none;
+        }
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        .movie-card:hover .movie-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .movie-info {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500">
+        <div class="flex items-center justify-between px-12 py-4">
+            <div class="flex items-center space-x-8">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" class="h-8">
+                <div class="hidden md:flex space-x-6">
+                    <a href="#" class="text-sm hover:text-gray-300">Home</a>
+                    <a href="#" class="text-sm hover:text-gray-300">TV Shows</a>
+                    <a href="#" class="text-sm hover:text-gray-300">Movies</a>
+                    <a href="#" class="text-sm hover:text-gray-300">New & Popular</a>
+                    <a href="#" class="text-sm hover:text-gray-300">My List</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="text-white focus:outline-none">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#" class="text-sm hover:text-gray-300">Kids</a>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#" class="text-sm hover:text-gray-300">DVD</a>
+                </div>
+                <div class="relative dropdown">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="w-8 h-8 rounded">
+                        <i class="fas fa-caret-down text-sm"></i>
+                    </button>
+                    <div class="hidden dropdown-menu absolute right-0 mt-2 w-48 bg-black border border-gray-700 rounded shadow-lg py-1">
+                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-800">Account</a>
+                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-800">Help Center</a>
+                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-800">Sign out of Netflix</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen">
+        <div class="absolute inset-0 hero-gradient z-10"></div>
+        <img src="https://image.tmdb.org/t/p/original/9dKCd55IuTT5QRs989m9Qlb7d8B.jpg" alt="Featured Show" class="w-full h-full object-cover">
+        <div class="absolute bottom-1/4 left-12 z-20 max-w-md">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Stranger_Things_logo.png" alt="Stranger Things Logo" class="h-20 mb-4">
+            <p class="text-lg mb-6">When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.</p>
+            <div class="flex space-x-4">
+                <button class="bg-white text-black px-6 py-2 rounded flex items-center hover:bg-opacity-80">
+                    <i class="fas fa-play mr-2"></i> Play
+                </button>
+                <button class="bg-gray-600 bg-opacity-70 text-white px-6 py-2 rounded flex items-center hover:bg-opacity-50">
+                    <i class="fas fa-info-circle mr-2"></i> More Info
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Rows -->
+    <div class="relative z-30 -mt-20 pb-20">
+        <!-- Row 1 -->
+        <div class="mb-8 px-12">
+            <h2 class="text-xl font-bold mb-4">Popular on Netflix</h2>
+            <div class="relative">
+                <div class="flex space-x-4 overflow-x-auto scroll-container pb-4">
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">The Witcher</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">97% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>2 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Money Heist</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">94% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>5 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/6kbAMLteGO8yyewYau6bJ683SW7.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">The Queen's Gambit</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">98% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>Limited Series</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/6fQeMPmxtiGZPTwT5f0w5E4DqWq.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Dark</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">96% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>3 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/5kkw5703L4Z4uwQfKJ6Lf5nZe5R.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">The Crown</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">95% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>4 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="mb-8 px-12">
+            <h2 class="text-xl font-bold mb-4">Trending Now</h2>
+            <div class="relative">
+                <div class="flex space-x-4 overflow-x-auto scroll-container pb-4">
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Squid Game</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">99% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>1 Season</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/34nDCQZwaEvrhl8XNNwBWxIQ8QN.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Ozark</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">97% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>4 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/6UH52Fmau8RPsMAbQbjwN3wJSCj.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Peaky Blinders</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">96% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>6 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/6fVX7Fy8X7k7pGZqQ1k4J8Z4Z4Z.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Breaking Bad</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">99% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>5 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/5kkw5703L4Z4uwQfKJ6Lf5nZe5R.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">The Crown</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">95% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>4 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="mb-8 px-12">
+            <h2 class="text-xl font-bold mb-4">Continue Watching</h2>
+            <div class="relative">
+                <div class="flex space-x-4 overflow-x-auto scroll-container pb-4">
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/5kkw5703L4Z4uwQfKJ6Lf5nZe5R.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">The Crown</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">95% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>4 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gray-600">
+                            <div class="h-full bg-red-600" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/6fVX7Fy8X7k7pGZqQ1k4J8Z4Z4Z.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Breaking Bad</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">99% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>5 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gray-600">
+                            <div class="h-full bg-red-600" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/6UH52Fmau8RPsMAbQbjwN3wJSCj.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Peaky Blinders</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">96% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>6 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gray-600">
+                            <div class="h-full bg-red-600" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/34nDCQZwaEvrhl8XNNwBWxIQ8QN.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Ozark</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">97% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>4 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gray-600">
+                            <div class="h-full bg-red-600" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Squid Game</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">99% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>1 Season</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gray-600">
+                            <div class="h-full bg-red-600" style="width: 10%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="mb-8 px-12">
+            <h2 class="text-xl font-bold mb-4">My List</h2>
+            <div class="relative">
+                <div class="flex space-x-4 overflow-x-auto scroll-container pb-4">
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/6kbAMLteGO8yyewYau6bJ683SW7.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">The Queen's Gambit</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">98% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>Limited Series</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-check text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Money Heist</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">94% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>5 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-check text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">The Witcher</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">97% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>2 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-check text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/6fQeMPmxtiGZPTwT5f0w5E4DqWq.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">Dark</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">96% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>3 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-check text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-64 h-36 relative movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500/5kkw5703L4Z4uwQfKJ6Lf5nZe5R.jpg" alt="Movie" class="w-full h-full object-cover rounded">
+                        <div class="absolute bottom-0 left-0 right-0 p-2 movie-info bg-black bg-opacity-70">
+                            <h3 class="text-sm font-bold">The Crown</h3>
+                            <div class="flex items-center text-xs mt-1">
+                                <span class="text-green-500">95% Match</span>
+                                <span class="mx-2">|</span>
+                                <span>4 Seasons</span>
+                            </div>
+                            <div class="flex mt-2 space-x-2">
+                                <button class="bg-white text-black p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-play text-xs"></i>
+                                </button>
+                                <button class="border border-gray-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center">
+                                    <i class="fas fa-check text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-500 py-8 px-12">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex space-x-4 mb-6">
+                <a href="#" class="hover:text-white"><i class="fab fa-facebook-square"></i></a>
+                <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-white"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">Audio Description</a></li>
+                        <li><a href="#" class="hover:underline">Investor Relations</a></li>
+                        <li><a href="#" class="hover:underline">Legal Notices</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">Help Center</a></li>
+                        <li><a href="#" class="hover:underline">Jobs</a></li>
+                        <li><a href="#" class="hover:underline">Cookie Preferences</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">Gift Cards</a></li>
+                        <li><a href="#" class="hover:underline">Terms of Use</a></li>
+                        <li><a href="#" class="hover:underline">Corporate Information</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">Media Center</a></li>
+                        <li><a href="#" class="hover:underline">Privacy</a></li>
+                        <li><a href="#" class="hover:underline">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <button class="border border-gray-500 px-3 py-1 text-sm mb-6 hover:text-white">
+                Service Code
+            </button>
+            <p class="text-xs">© 1997-2023 Netflix, Inc.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Make navbar transparent when at top of page
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                navbar.classList.add('bg-black');
+                navbar.classList.remove('bg-gradient-to-b', 'from-black');
+            } else {
+                navbar.classList.remove('bg-black');
+                navbar.classList.add('bg-gradient-to-b', 'from-black');
+            }
+        });
+
+        // Add hover effect to movie cards
+        document.querySelectorAll('.movie-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.2)';
+                this.style.zIndex = '40';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.zIndex = '30';
+            });
+        });
+
+        // Simulate loading more content when scrolling to bottom
+        window.addEventListener('scroll', function() {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
+                // In a real app, you would load more content here
+                console.log('Loading more content...');
+            }
+        });
+    </script>
+</body>
+</html>
